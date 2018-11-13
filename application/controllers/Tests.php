@@ -27,7 +27,11 @@ class Tests extends MY_Controller
             die('Access denied!');
         }
     }
-
+    // костыль
+    public function index()
+    {
+        $this->get_last_news();
+    }
     public function get_last_news()
     {
         $this->response_data->data->news = News_model::get_all('short_info');
@@ -35,4 +39,5 @@ class Tests extends MY_Controller
         $this->response($this->response_data);
     }
 
+    
 }
