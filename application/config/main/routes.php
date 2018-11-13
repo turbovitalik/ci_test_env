@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // 	$route['404_override'] = 'main_page/closed';
 // }else{
 
-$route['default_controller'] = 'main_page';
+$route['default_controller'] = 'tests';
 $route['404_override'] = 'api/error_404';
 $route['404'] = 'api/error_404';
 $route['error'] = 'main_page/error';
@@ -128,4 +128,4 @@ $route['admin/account/promo/(:num)'] = 'admin/user_promo/$1';
 $route['admin/account/inventory/(:num)'] = 'admin/user_inventory/$1';
 $route['admin/account/login_log/(:num)'] = 'admin/login_log/$1';
 
-$route['fight'] = 'fight/index';
+
