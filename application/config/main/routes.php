@@ -128,4 +128,7 @@ $route['admin/account/promo/(:num)'] = 'admin/user_promo/$1';
 $route['admin/account/inventory/(:num)'] = 'admin/user_inventory/$1';
 $route['admin/account/login_log/(:num)'] = 'admin/login_log/$1';
 
+$route['default_controller'] = 'index/main';
+$route['news/comment']['post'] = 'news_comments/store';
+$route['news/comment']['get'] = 'news_comments/index';
 

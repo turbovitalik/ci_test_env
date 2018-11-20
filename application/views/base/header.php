@@ -1,17 +1,9 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: mr.incognito
- * Date: 10.11.2018
- * Time: 17:22
- */
-
-?>
-
 <!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Test Assignment</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    <link href="/src/css/narrow-jumbotron.css" rel="stylesheet">
 </head>
 <body>

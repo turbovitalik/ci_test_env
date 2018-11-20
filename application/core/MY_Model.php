@@ -10,11 +10,17 @@ class MY_Model {
     public static $redis = NULL;
     public function __construct()
     {
-        $this->CI =& get_instance();
-//        if(is_null(self::$redis)){
-//            self::$redis = self::_connectRedis();
-//        }
+        $CI =& get_instance();
+        $this->CI = $CI;
+        $this->s = $CI->s;
+    }
 
+    /**
+     * @return Sparrow
+     */
+    public function getSparrow()
+    {
+        return $this->s;
     }
 
 //    private static function _connectRedis()

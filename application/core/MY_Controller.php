@@ -11,6 +11,8 @@ class MY_Controller extends CI_Controller
 
     public function __construct()
     {
+        $this->authorize_request();
+
         $method = $_SERVER['REQUEST_METHOD'];
         if ($method == "OPTIONS") {
             die();
@@ -52,6 +54,11 @@ class MY_Controller extends CI_Controller
         $this->output->set_status_header($http_code);
         $this->output->set_content_type('application/json')->set_output(json_encode($data));
         return TRUE;
+    }
+
+    public function authorize_request()
+    {
+        $this->user = 155;
     }
 
     public function __destruct()

@@ -28,6 +28,7 @@ class News_model extends MY_Model
     function __construct($id = FALSE)
     {
         parent::__construct();
+
         $this->class_table = self::NEWS_TABLE;
         $this->set_id($id);
     }
@@ -212,5 +213,32 @@ class News_model extends MY_Model
         }
         return $res;
     }
+
+    public function get_last_news($limit)
+    {
+        $db = $this->getSparrow();
+
+        $news = $db->from('news')
+            ->limit($limit)
+            ->sortDesc('time_created')
+            ->select()
+            ->many();
+
+        return $news;
+
+    }
+
+    public function get_by_id($id)
+    {
+        $db = $this->getSparrow();
+
+        $single = $db->from('news')
+            ->where('id', $id)
+            ->select()
+            ->one();
+
+        return $single;
+    }
+
 
 }

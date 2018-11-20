@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CodeIgniter
  *
@@ -104,7 +105,7 @@ switch (ENVIRONMENT)
  * Include the path if the folder is not in the same directory
  * as this file.
  */
-$system_path = ENVIRONMENT === 'docker' ? '/project/system' : '/var/www/monster_slim/system';
+$system_path = ENVIRONMENT === 'docker' ? '/project/system' : '/home/vagrant/code/testnews/system';
 
 /*
  *---------------------------------------------------------------
@@ -119,7 +120,7 @@ $system_path = ENVIRONMENT === 'docker' ? '/project/system' : '/var/www/monster_
  *
  * NO TRAILING SLASH!
  */
-$application_folder = ENVIRONMENT === 'docker' ? '/project/application/' : '/var/www/monster_slim/application';
+$application_folder = ENVIRONMENT === 'docker' ? '/project/application/' : '/home/vagrant/code/testnews/application';
 
 /*
  *---------------------------------------------------------------
