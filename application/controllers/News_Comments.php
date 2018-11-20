@@ -10,7 +10,7 @@ class News_Comments extends MY_Controller
 
     public function store()
     {
-        $postData = json_decode($this->input->raw_input_stream, true);
+        $postData = $this->get_input_from_stream();
 
         $this->news_comment_model->insert_comment($postData);
 

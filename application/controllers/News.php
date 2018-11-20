@@ -8,8 +8,6 @@
  */
 class News extends MY_Controller
 {
-    protected $response_data;
-
     /**
      * @var News_model
      */
@@ -25,22 +23,17 @@ class News extends MY_Controller
         $this->load->model('news_model');
         $this->load->model('news_comment_model');
         $this->load->model('like_model');
+        $this->load->library('comments_helper');
 
         $this->response_data = new stdClass();
         $this->response_data->status = 'success';
         $this->response_data->error_message = '';
         $this->response_data->data = new stdClass();
 
-        if (ENVIRONMENT === 'production')
-        {
+        if (ENVIRONMENT === 'production') {
             die('Access denied!');
         }
-        
-    }
-    // костыль
-    public function index()
-    {
-        $this->get_last_news();
+
     }
 
     public function news()
@@ -60,40 +53,16 @@ class News extends MY_Controller
 
         $commentsLikedByUser = $this->like_model->get_liked_by_user($this->user, $id, 'comment');
 
-        $commentsMarked = $this->markCommentsUserCanLike($comments, $commentsLikedByUser);
+        $commentsPrepared = $this->comments_helper->mark_comments_user_can_like($comments, $commentsLikedByUser);
 
         $likes = $this->like_model->get_likes_count($id, 'news');
 
         $responseData = [
             'news_item' => $news,
-            'comments' => $commentsMarked,
+            'comments' => $commentsPrepared,
             'likes' => $likes,
         ];
 
         $this->response($responseData);
     }
-
-    public function get_last_news()
-    {
-        $this->load->view('base/header');
-        $this->load->view('base/footer');
-    }
-
-    public function markCommentsUserCanLike($allComments, $userLikes)
-    {
-        $commentIdsLikedByUser = [];
-        foreach ($userLikes as $like) {
-            $commentIdsLikedByUser[] = $like['item_id'];
-        }
-
-        $markedComments = [];
-        foreach ($allComments as $comment) {
-            $comment['isLiked'] = in_array($comment['comment_id'], $commentIdsLikedByUser) ? 1 : 0;
-            $markedComments[] = $comment;
-        }
-
-        return $markedComments;
-    }
-
-    
 }

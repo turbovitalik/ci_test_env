@@ -61,8 +61,10 @@ class MY_Controller extends CI_Controller
         $this->user = 155;
     }
 
-    public function __destruct()
+    public function get_input_from_stream()
     {
+        $streamData = $this->input->raw_input_stream;
 
+        return json_decode($streamData, true);
     }
 }

@@ -29,6 +29,7 @@ class News_model extends MY_Model
     {
         parent::__construct();
 
+        $this->db = $this->getSparrow();
         $this->class_table = self::NEWS_TABLE;
         $this->set_id($id);
     }
@@ -216,9 +217,7 @@ class News_model extends MY_Model
 
     public function get_last_news($limit)
     {
-        $db = $this->getSparrow();
-
-        $news = $db->from('news')
+        $news = $this->db->from($this->class_table)
             ->limit($limit)
             ->sortDesc('time_created')
             ->select()
@@ -230,9 +229,7 @@ class News_model extends MY_Model
 
     public function get_by_id($id)
     {
-        $db = $this->getSparrow();
-
-        $single = $db->from('news')
+        $single = $this->db->from($this->class_table)
             ->where('id', $id)
             ->select()
             ->one();

@@ -10,8 +10,7 @@ class Likes extends MY_Controller
 
     public function save()
     {
-        //TODO: fix this
-        $postData = json_decode($this->input->raw_input_stream, true);
+        $postData = $this->get_input_from_stream();
 
         $likeType = $postData['type'];
         $itemId = (int) $postData['id'];
@@ -24,7 +23,7 @@ class Likes extends MY_Controller
 
     public function remove()
     {
-        $postData = json_decode($this->input->raw_input_stream, true);
+        $postData = $this->get_input_from_stream();
 
         $likeType = $postData['type'];
         $itemId = (int) $postData['id'];
